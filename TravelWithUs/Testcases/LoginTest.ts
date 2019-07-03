@@ -23,7 +23,7 @@ describe("Login page ", function(){
         console.log("STEP 1: Login to the website")
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
-        browser.get("http://139.180.141.253/travelwithus/index.php")
+        browser.get("http://travelwithus.asia/")
         var email=dataArray[0].get("Email")
         var password=dataArray[0].get("Password")
 
@@ -39,7 +39,7 @@ describe("Login page ", function(){
         console.log("STEP 1: Login to the website with invalid account")
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
-        browser.get("http://139.180.141.253/travelwithus/")  
+        browser.get("http://travelwithus.asia/")  
 
         var email=dataArray[0].get("Email")
         var password=dataArray[0].get("Password")
@@ -70,7 +70,7 @@ describe("Login page ", function(){
         console.log("STEP 1: Login to the website with blank username and password")
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
-        browser.get("http://139.180.141.253/travelwithus/")  
+        browser.get("http://travelwithus.asia/")  
 
         console.log("STEP1: Login to the website with email " + email + " and password " + password)
         await loginPage.loginToWebsite(email, password)

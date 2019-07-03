@@ -29,7 +29,7 @@ describe("User ",function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Login.xlsx", "Register", "TC03")
         browser.waitForAngularEnabled(false)
         debugger
-        browser.get("http://11.11.254.57/travelwithus/index.php")
+        browser.get("http://travelwithus.asia/")
         debugger
         browser.manage().window().maximize()
         debugger

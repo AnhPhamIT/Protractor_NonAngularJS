@@ -135,7 +135,7 @@ describe("User", function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Trips.xlsx", "EditToDo", "TC05");
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
-        browser.get("http://11.11.254.57/travelwithus/index.php")
+        browser.get("http://travelwithus.asia/")
 
         var email =dataArray[0].get("Email")
         var pasword= dataArray[0].get("Password")
@@ -163,7 +163,7 @@ describe("User", function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Trips.xlsx", "DeleteToDo", "TC06");
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
-        browser.get("http://11.11.254.57/travelwithus/index.php")
+        browser.get("http://travelwithus.asia/")
 
         var email =dataArray[0].get("Email")
         var pasword= dataArray[0].get("Password")
