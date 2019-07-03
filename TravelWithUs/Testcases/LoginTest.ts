@@ -20,7 +20,7 @@ describe("Login page ", function(){
 
     fit("should welcome user when login with valid account", async function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Login.xlsx", "Login", "TC01")
-        console.log("STEP 1: Login to the website http://travelwithus.asia/")
+        console.log("STEP 1: Login to the website http://travelwithus.asia")
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
         browser.get("http://travelwithus.asia/")
