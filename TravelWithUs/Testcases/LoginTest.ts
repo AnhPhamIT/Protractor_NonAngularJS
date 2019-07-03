@@ -39,7 +39,7 @@ describe("Login page ", function(){
         console.log("STEP 1: Login to the website with invalid account")
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
-        browser.get("http://travelwithus.asia/")  
+        browser.get("http://travelwithus.asia")  
 
         var email=dataArray[0].get("Email")
         var password=dataArray[0].get("Password")
