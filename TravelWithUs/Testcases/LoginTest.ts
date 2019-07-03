@@ -18,7 +18,7 @@ describe("Login page ", function(){
 
     })
 
-    it("should welcome user when login with valid account", async function(){
+    fit("should welcome user when login with valid account", async function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Login.xlsx", "Login", "TC01")
         console.log("STEP 1: Login to the website")
         browser.waitForAngularEnabled(false)
@@ -34,7 +34,7 @@ describe("Login page ", function(){
 
     })
 
-    fit("should show error message 'There is no user record corresponding to this identifier. The user may have been deleted.' when login with invalid account", async function(){
+    it("should show error message 'There is no user record corresponding to this identifier. The user may have been deleted.' when login with invalid account", async function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Login.xlsx", "Login", "TC02")
         console.log("STEP 1: Login to the website with invalid account")
         browser.waitForAngularEnabled(false)
