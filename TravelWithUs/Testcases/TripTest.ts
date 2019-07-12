@@ -11,7 +11,6 @@ describe("User", function(){
     var originalTimeout:number;
     var alertHandling:AlertHandling
     beforeEach(async function(){
-        await browser.restart()
         loginPage= new LoginPage(browser)
         homePage=new HomePage(browser)
         alertHandling = new AlertHandling(browser)
@@ -23,7 +22,7 @@ describe("User", function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Trips.xlsx", "CreateTrip", "TC01");
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
-        browser.get("http://11.11.254.57/travelwithus/index.php")
+        browser.get("http://104.211.52.121/index.php")
         debugger
         var email =dataArray[0].get("Email")
         var pasword= dataArray[0].get("Password")
@@ -50,7 +49,7 @@ describe("User", function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Trips.xlsx", "DeleteTrip", "TC02");
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
-        browser.get("http://11.11.254.57/travelwithus/index.php")
+        browser.get("http://104.211.52.121/index.php")
 
         var email =dataArray[0].get("Email")
         var pasword= dataArray[0].get("Password")
@@ -70,7 +69,7 @@ describe("User", function(){
         await homePage.deleteTrip(title)
         debugger
         console.log("STEP 2: verify alert message")
-        await alertHandling.verifyAndAcceptAlert("The trip has been deleted!")
+        await alertHandling.verifyAndAcceptAlert("Your trip has been deleted!")
         debugger
         console.log("STEP 3: accept the alert and make sure the deleted trip should not be showed on Trip table")
         await homePage.verifyDeletedTrip(title)
@@ -80,7 +79,7 @@ describe("User", function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Trips.xlsx", "EditTrip", "TC03");
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
-        browser.get("http://11.11.254.57/travelwithus/index.php")
+        browser.get("http://104.211.52.121/index.php")
 
         var email =dataArray[0].get("Email")
         var pasword= dataArray[0].get("Password")
@@ -98,7 +97,7 @@ describe("User", function(){
         await homePage.editTrip(title, dataArray[0].get("EditTitle"), dataArray[0].get("EditPlace"), dataArray[0].get("EditStartDate"), dataArray[0].get("EditEndDate"), dataArray[0].get("EditMembers"))
         debugger
         console.log("STEP 2: verify alert message")
-        await alertHandling.verifyAndAcceptAlert("The trip has been updated!")
+        await alertHandling.verifyAndAcceptAlert("Your trip has been updated!")
         debugger
         console.log("STEP 3: accept the alert and make sure the deleted trip should not be showed on Trip table")
         await homePage.verifyNewTrip(dataArray[0].get("EditTitle"), dataArray[0].get("EditPlace"), dataArray[0].get("EditStartDate"), dataArray[0].get("EditEndDate"), dataArray[0].get("EditMembers"))
@@ -109,7 +108,7 @@ describe("User", function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Trips.xlsx", "AddToDo", "TC04");
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
-        browser.get("http://11.11.254.57/travelwithus/index.php")
+        browser.get("http://104.211.52.121/index.php")
 
         var email =dataArray[0].get("Email")
         var pasword= dataArray[0].get("Password")
@@ -126,7 +125,7 @@ describe("User", function(){
         await alertHandling.verifyAndAcceptAlert("A new trip has been created!")
         console.log("STEP 1: Add ToDo list for trip with title " + title)
         await homePage.addToDo(title, name, description)
-
+        await browser.sleep(3000)
         await homePage.verifyNewToDo(name, description)
         
     })
@@ -135,7 +134,7 @@ describe("User", function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Trips.xlsx", "EditToDo", "TC05");
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
-        browser.get("http://travelwithus.asia/")
+        browser.get("http://104.211.52.121/index.php")
 
         var email =dataArray[0].get("Email")
         var pasword= dataArray[0].get("Password")
@@ -163,7 +162,7 @@ describe("User", function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Trips.xlsx", "DeleteToDo", "TC06");
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
-        browser.get("http://travelwithus.asia/")
+        browser.get("http://104.211.52.121/index.php")
 
         var email =dataArray[0].get("Email")
         var pasword= dataArray[0].get("Password")

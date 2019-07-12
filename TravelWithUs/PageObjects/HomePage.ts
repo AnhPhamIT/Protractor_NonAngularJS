@@ -195,19 +195,23 @@ export class HomePage{
         await this.tableSupport.doActionOnTrip(tripTitle, "Todo List")
 
         await this.addNewToDo(name, description)
+        debugger
     }
 
     async editToDo(name:string){
         console.log("Homepage: Tick checkbox Done")
         await this.tableSupport.markDoneOnToDo(name)
+        await this.curBrowser.sleep(3000)
         await this.curBrowser.switchTo().defaultContent()
         await this.actionSupport.clickOnElement(this.todoClose_btn)
+        debugger
     }
 
     
     async deleteToDo(name:string){
         console.log("Homepage: Tick checkbox Done")
         await this.tableSupport.deleteToDo(name)
+        await this.curBrowser.sleep(3000)
         await this.curBrowser.switchTo().defaultContent()
         await this.actionSupport.clickOnElement(this.todoClose_btn)
     }
@@ -216,6 +220,7 @@ export class HomePage{
         debugger
         await this.tableSupport.doActionOnTrip(tripTitle, "Todo List")
         var ele= await this.curBrowser.findElement(by.xpath("//iframe[@id='forPostyouradd']"))
+        await this.curBrowser.sleep(10000)
         await this.curBrowser.switchTo().frame(ele)
         this.tableSupport= new TableSupport(this.todo_tbl, this.curBrowser)
         await this.tableSupport.getAToDoRow(name).then(function(value){
@@ -226,6 +231,7 @@ export class HomePage{
     async verifyEditToDo(tripTitle:string, name:string){
         await this.tableSupport.doActionOnTrip(tripTitle, "Todo List")
         var ele= await this.curBrowser.findElement(by.xpath("//iframe[@id='forPostyouradd']"))
+        await this.curBrowser.sleep(5000)
         await this.curBrowser.switchTo().frame(ele)
         ///check the checkbox is ticked or not
         
@@ -234,16 +240,20 @@ export class HomePage{
     async addNewToDo(name:string, description:string){
         console.log("Homepage: Add a new ToDo list with name  " + name + " and description " + description)
         var ele= await this.curBrowser.findElement(by.xpath("//iframe[@id='forPostyouradd']"))
+        await this.curBrowser.sleep(5000)
         await this.curBrowser.switchTo().frame(ele)
+        //await this.curBrowser.switchTo().frame(1)
 
         await this.actionSupport.sendKeysOnElement(this.todoName_txt, name)
         await this.actionSupport.sendKeysOnElement(this.todoDes_txt, description)
         await this.actionSupport.clickOnElement(this.addNewToDo_btn)
+        debugger
     }
 
     async verifyNewToDo(name:string, description:string){
         this.tableSupport= new TableSupport(this.todo_tbl, this.curBrowser)
         await this.tableSupport.getAToDoRow(name).then(function(value){
+            debugger
             expect(value).toEqual([ description, '', 'DELETE' ])
         })
     }

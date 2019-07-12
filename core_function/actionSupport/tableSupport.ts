@@ -26,12 +26,14 @@ export class TableSupport{
         // console.log("Row number " + rowNumber)
         // return rowNumber
         //return await this.table_ele.element(by.xpath("tbody")).all(by.xpath("tr")).count()
+        await this.actionSupport.waitForElementDisplay(this.table_xpath)
         return await this.curBrowser.element(by.xpath(this.table_xpath)).all(by.tagName("tr")).count()
     }
 
     //getColumnsNo
     async getColumnCount(){
         //return await this.table_ele.element(by.xpath("thead/tr")).all(by.css("th")).count()
+        await this.actionSupport.waitForElementDisplay(this.table_xpath)
         return await this.curBrowser.element(by.xpath(this.table_xpath)).all(by.css("th")).count()
     }
 
@@ -39,30 +41,37 @@ export class TableSupport{
     async getCellData(rowIndex:number, colIndex:number){
         if(rowIndex == 0){
 			throw new Error("Row number starts from 1");
-		}
+        }
+        await this.actionSupport.waitForElementDisplay(this.table_xpath)
         return await this.curBrowser.element(by.xpath(this.table_xpath)).all(by.xpath("tbody/tr["+rowIndex+"]/td["+colIndex+"]")).getText()
     }
 
     //readAllTable
     async readAllTable(){
+        await this.actionSupport.waitForElementDisplay(this.table_xpath)
         return await this.curBrowser.element(by.xpath(this.table_xpath)).all(by.xpath("tbody/tr/td")).getText()
     }
 
     //search and get all data in the specific row
     async getATripRow(tripName:string){
+        await this.actionSupport.waitForElementDisplay(this.table_xpath)
         return await this.curBrowser.element(by.xpath(this.table_xpath)).all(by.xpath("tbody/tr/td[text()='"+tripName+"']/following-sibling::td")).getText()
     }
 
     async getAToDoRow(todoName:string){
+        await this.actionSupport.waitForElementDisplay(this.table_xpath)
         return await this.curBrowser.element(by.xpath(this.table_xpath)).all(by.xpath("tbody/tr/td[text()='"+todoName+"']/following-sibling::td")).getText()
     }
 
     async getToDoChBoxValue(todoName:string){
-        var ele=await this.curBrowser.findElement(by.xpath("//tbody/tr/td[text()='"+todoName+"']/following-sibling::td/div/input[@type='checkbox']"))
-        // await ele.isSelected().then(function(value){
-        //     console.log("checkbox status " + value)
-        //     expect(value).toBe(false)
-        // })
+        await this.actionSupport.waitForElementDisplay("//tbody/tr/td[text()='"+todoName+"']/following-sibling::td/div/input[@type='checkbox']")
+        var ele= this.curBrowser.element(by.xpath("//tbody/tr/td[text()='"+todoName+"']/following-sibling::td/div/input[@type='checkbox']"))
+        await this.curBrowser.sleep(3000)
+        await ele.isSelected().then(function(value){
+            console.log("checkbox status " + value)
+            debugger
+        })
+        
         await expect(ele.isSelected()).toBe(true)
     }
 

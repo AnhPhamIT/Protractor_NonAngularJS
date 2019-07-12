@@ -6,7 +6,7 @@ export class ActionSupport{
     timeOut:number
     until:ProtractorExpectedConditions
 
-    constructor(browser, timeOut=60000){
+    constructor(browser:ProtractorBrowser, timeOut=120000){
         this.curBrowser=browser
         this.timeOut =timeOut
         this.until = protractor.ExpectedConditions
@@ -26,7 +26,7 @@ export class ActionSupport{
         var ele:ElementFinder = await this.curBrowser.element(by.xpath(xpath));
         await this.curBrowser.wait(this.until.presenceOf(ele), timeOut, 'Element ' + xpath +' takes too long to appear in the DOM');
         await this.curBrowser.wait(this.until.elementToBeClickable(ele), timeOut, 'Element '+ xpath +' is not interactable');
-        var textLength:number
+        var textLength=0
         try {
             await ele.clear()
             for(var i = 0; i < data.length; i++){
