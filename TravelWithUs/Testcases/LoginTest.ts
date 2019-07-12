@@ -20,7 +20,11 @@ describe("Login page ", function(){
 
     it("should welcome user when login with valid account", async function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Login.xlsx", "Login", "TC01")
+<<<<<<< HEAD
         console.log("STEP 1: Login to the website http://104.211.52.121/index.php")
+=======
+        console.log("STEP 1: Login to the website http://travelwithus.asia/")
+>>>>>>> 45b09ce2c051dbca3c1f9743299a872892ece2c4
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
         browser.get("http://104.211.52.121/index.php")
@@ -39,7 +43,11 @@ describe("Login page ", function(){
         console.log("STEP 1: Login to the website with invalid account")
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
+<<<<<<< HEAD
         browser.get("http://104.211.52.121/index.php")  
+=======
+        browser.get("http://travelwithus.asia")  
+>>>>>>> 45b09ce2c051dbca3c1f9743299a872892ece2c4
 
         var email=dataArray[0].get("Email")
         var password=dataArray[0].get("Password")
