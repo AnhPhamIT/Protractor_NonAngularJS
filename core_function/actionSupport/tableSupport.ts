@@ -82,8 +82,8 @@ export class TableSupport{
         await this.actionSupport.clickOnElement(ele_xpath)
     }
 
-    async markDoneOnToDo(todoName:string){
-        await this.actionSupport.clickOnElement("//tbody/tr/td[text()='"+todoName+"']/following-sibling::td/div/input[@type='checkbox']")
+    async markDoneOnToDo(todoName:string){        
+        await this.actionSupport.clickOnElement("//tbody/tr/td[text()='"+todoName+"']/following-sibling::td/div/input[@type='checkbox']")    
     }
     async deleteToDo(todoName:string){
         await this.actionSupport.clickOnElement("//tbody/tr/td[text()='"+todoName+"']/following-sibling::td/div/button[text()='DELETE']")

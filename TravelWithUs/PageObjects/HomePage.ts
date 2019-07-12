@@ -198,8 +198,15 @@ export class HomePage{
         debugger
     }
 
+    async selectToDoList(tripTitle:string){
+        await this.tableSupport.doActionOnTrip(tripTitle, "Todo List")
+    }
+
     async editToDo(name:string){
         console.log("Homepage: Tick checkbox Done")
+        var ele= await this.curBrowser.findElement(by.xpath("//iframe[@id='forPostyouradd']"))
+        await this.curBrowser.sleep(5000)
+        await this.curBrowser.switchTo().frame(ele)
         await this.tableSupport.markDoneOnToDo(name)
         await this.curBrowser.sleep(3000)
         await this.curBrowser.switchTo().defaultContent()
@@ -210,6 +217,9 @@ export class HomePage{
     
     async deleteToDo(name:string){
         console.log("Homepage: Tick checkbox Done")
+        var ele= await this.curBrowser.findElement(by.xpath("//iframe[@id='forPostyouradd']"))
+        await this.curBrowser.sleep(5000)
+        await this.curBrowser.switchTo().frame(ele)
         await this.tableSupport.deleteToDo(name)
         await this.curBrowser.sleep(3000)
         await this.curBrowser.switchTo().defaultContent()

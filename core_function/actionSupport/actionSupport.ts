@@ -6,7 +6,7 @@ export class ActionSupport{
     timeOut:number
     until:ProtractorExpectedConditions
 
-    constructor(browser:ProtractorBrowser, timeOut=120000){
+    constructor(browser:ProtractorBrowser, timeOut=60000){
         this.curBrowser=browser
         this.timeOut =timeOut
         this.until = protractor.ExpectedConditions
