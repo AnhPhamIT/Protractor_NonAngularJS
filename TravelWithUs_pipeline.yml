@@ -1,0 +1,31 @@
+trigger:
+- master
+
+pool:
+    name: Default
+
+steps:
+- script: |
+   C:\Users\dmhuy\Downloads\agent\_work\_tool\node\10.16.0\x64\node C:\Users\dmhuy\Downloads\agent\_work\_tool\node\10.16.0\x64\webdriver-manager update
+   
+  displayName: 'Pre-Test:update webdriver'
+  enabled: false
+  env:
+    env_path: C:\Users\dmhuy\Downloads\agent\_work\_tool\node\10.16.0\x64
+- script: |
+   C:\Users\dmhuy\Downloads\agent\_work\_tool\node\10.16.0\x64\node C:\Users\dmhuy\Downloads\agent\_work\_tool\node\10.16.0\x64\webdriver-manager start
+   
+  displayName: 'Pre-Test: start webdriver'
+  enabled: false
+  env:
+    env_path: C:\Users\dmhuy\Downloads\agent\_work\_tool\node\10.16.0\x64
+- script: 'C:\Users\dmhuy\Downloads\agent\_work\_tool\node\10.16.0\x64\npm install'
+
+  workingDirectory: '$(System.DefaultWorkingDirectory)/TravelWithUs_Test'
+
+  displayName: 'install library'
+- script: 'C:\Users\dmhuy\Downloads\agent\_work\_tool\node\10.16.0\x64\protractor config.js'
+
+  workingDirectory: '$(System.DefaultWorkingDirectory)/TravelWithUs_Test'
+
+  displayName: 'Run Test'

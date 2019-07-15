@@ -7,7 +7,7 @@ exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
     specs: ['Testcases/TripTest.ts'],
     //run directly with browser driver without using webdriver manager
-    directConnect: true,
+    //directConnect: true,
     // Capabilities to be passed to the webdriver instance.
     capabilities: {
         browserName: 'chrome'
