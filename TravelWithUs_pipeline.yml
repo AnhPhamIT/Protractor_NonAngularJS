@@ -6,26 +6,26 @@ pool:
 
 steps:
 - script: |
-   C:\Users\dmhuy\Downloads\agent\_work\_tool\node\10.16.0\x64\node C:\Users\dmhuy\Downloads\agent\_work\_tool\node\10.16.0\x64\webdriver-manager update
+   C:\Users\dmhuy\Downloads\agent\_work\_tool\node\node C:\Users\dmhuy\Downloads\agent\_work\_tool\node\node_modules\protractor\bin\webdriver-manager update
    
   displayName: 'Pre-Test:update webdriver'
   enabled: false
   env:
-    env_path: C:\Users\dmhuy\Downloads\agent\_work\_tool\node\10.16.0\x64
+    env_path: C:\Users\dmhuy\Downloads\agent\_work\_tool\node\node
 - script: |
-   C:\Users\dmhuy\Downloads\agent\_work\_tool\node\10.16.0\x64\node C:\Users\dmhuy\Downloads\agent\_work\_tool\node\10.16.0\x64\webdriver-manager start
+   C:\Users\dmhuy\Downloads\agent\_work\_tool\node\node C:\Users\dmhuy\Downloads\agent\_work\_tool\node\node_modules\protractor\bin\webdriver-manager start
    
   displayName: 'Pre-Test: start webdriver'
   enabled: false
   env:
-    env_path: C:\Users\dmhuy\Downloads\agent\_work\_tool\node\10.16.0\x64
-- script: 'C:\Users\dmhuy\Downloads\agent\_work\_tool\node\10.16.0\x64\npm install'
+    env_path: C:\Users\dmhuy\Downloads\agent\_work\_tool\node\node
+- script: 'C:\Users\dmhuy\Downloads\agent\_work\_tool\node\node\npm install'
 
-  workingDirectory: '$(System.DefaultWorkingDirectory)/TravelWithUs_Test'
+  workingDirectory: '$(System.DefaultWorkingDirectory)/TravelWithUs'
 
   displayName: 'install library'
-- script: 'C:\Users\dmhuy\Downloads\agent\_work\_tool\node\10.16.0\x64\protractor config.js'
+- script: 'C:\Users\dmhuy\Downloads\agent\_work\_tool\node\node_modules\protractor\bin\protractor config.js'
 
-  workingDirectory: '$(System.DefaultWorkingDirectory)/TravelWithUs_Test'
+  workingDirectory: '$(System.DefaultWorkingDirectory)/TravelWithUs'
 
   displayName: 'Run Test'
