@@ -16,7 +16,6 @@ describe("User", function(){
         alertHandling = new AlertHandling(browser)
         originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL
         jasmine.DEFAULT_TIMEOUT_INTERVAL = 600000
-
     })
     it("can create trip successfully", async function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Trips.xlsx", "CreateTrip", "TC01");
