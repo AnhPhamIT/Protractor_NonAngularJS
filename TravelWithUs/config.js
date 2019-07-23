@@ -56,8 +56,7 @@ exports.config = {
         //     }
         // });
 
-        // Add a screenshot reporter and store screenshots to `/tmp/screenshots`:
-        
+        // Add a screenshot reporter and store screenshots to `/tmp/screenshots`: 
     },
     SELENIUM_PROMISE_MANAGER: false,
     //HTMLReport called once tests are finished
