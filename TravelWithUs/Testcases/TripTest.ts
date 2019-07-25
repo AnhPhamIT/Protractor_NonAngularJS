@@ -10,6 +10,11 @@ describe("User", function(){
     var dataArray
     var originalTimeout:number;
     var alertHandling:AlertHandling
+    var appURL=browser.params.appURL
+    var email=browser.params.user
+    var password=browser.params.pass
+
+
     beforeEach(async function(){
         loginPage= new LoginPage(browser)
         homePage=new HomePage(browser)
@@ -22,17 +27,16 @@ describe("User", function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Trips.xlsx", "CreateTrip", "TC01");
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
-        browser.get("http://104.211.52.121/index.php")
+        browser.get(appURL)
         debugger
-        var email =dataArray[0].get("Email")
-        var pasword= dataArray[0].get("Password")
+
         var title= dataArray[0].get("Title")
         var place= dataArray[0].get("Place")
         var startDate= dataArray[0].get("StartDate")
         var endDate= dataArray[0].get("EndDate")
         var members= dataArray[0].get("Members")
 
-        await loginPage.loginToWebsite(email, pasword)
+        await loginPage.loginToWebsite(email, password)
         console.log("STEP 1: Create a new trip with those information " + title + ", " + place + ", " + startDate + ", " + endDate + ", " + members)
         await homePage.creatingATrip(title, place, startDate, endDate, members)
         await alertHandling.verifyAndAcceptAlert("A new trip has been created!")
@@ -44,15 +48,13 @@ describe("User", function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Trips.xlsx", "AddToDo", "TC04");
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
-        browser.get("http://104.211.52.121/index.php")
+        browser.get(appURL)
 
-        var email =dataArray[0].get("Email")
-        var pasword= dataArray[0].get("Password")
         var title= dataArray[0].get("Title")
         var name= dataArray[0].get("Name")
         var description= dataArray[0].get("Description")
 
-        await loginPage.loginToWebsite(email, pasword)
+        await loginPage.loginToWebsite(email, password)
         console.log("STEP 1: Add ToDo list for trip with title " + title)
         await homePage.addToDo(title, name, description)
         await browser.sleep(3000)
@@ -65,14 +67,12 @@ describe("User", function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Trips.xlsx", "EditToDo", "TC05");
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
-        browser.get("http://104.211.52.121/index.php")
+        browser.get(browser.params.appURL)
 
-        var email =dataArray[0].get("Email")
-        var pasword= dataArray[0].get("Password")
         var title= dataArray[0].get("Title")
         var name= dataArray[0].get("Name")
 
-        await loginPage.loginToWebsite(email, pasword)
+        await loginPage.loginToWebsite(email, password)
         console.log("STEP 1: Mark Done on ToDO " + name)
         await homePage.selectToDoList(title)
         await homePage.editToDo(name)
@@ -85,14 +85,12 @@ describe("User", function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Trips.xlsx", "DeleteToDo", "TC06");
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
-        browser.get("http://104.211.52.121/index.php")
+        browser.get(browser.params.appURL)
 
-        var email =dataArray[0].get("Email")
-        var pasword= dataArray[0].get("Password")
         var title= dataArray[0].get("Title")
         var name= dataArray[0].get("Name")
 
-        await loginPage.loginToWebsite(email, pasword)
+        await loginPage.loginToWebsite(email, password)
         console.log("STEP 1: Delete on ToDO " + name)
         await homePage.selectToDoList(title)
         await homePage.deleteToDo(name)
@@ -106,13 +104,11 @@ describe("User", function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Trips.xlsx", "EditTrip", "TC03");
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
-        browser.get("http://104.211.52.121/index.php")
+        browser.get(browser.params.appURL)
 
-        var email =dataArray[0].get("Email")
-        var pasword= dataArray[0].get("Password")
         var title= dataArray[0].get("Title")
 
-        await loginPage.loginToWebsite(email, pasword)
+        await loginPage.loginToWebsite(email, password)
         console.log("STEP 1: Edit trip with title " + title)
         await homePage.editTrip(title, dataArray[0].get("EditTitle"), dataArray[0].get("EditPlace"), dataArray[0].get("EditStartDate"), dataArray[0].get("EditEndDate"), dataArray[0].get("EditMembers"))
         debugger
@@ -128,13 +124,11 @@ describe("User", function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Trips.xlsx", "DeleteTrip", "TC02");
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
-        browser.get("http://104.211.52.121/index.php")
+        browser.get(browser.params.appURL)
 
-        var email =dataArray[0].get("Email")
-        var pasword= dataArray[0].get("Password")
         var title= dataArray[0].get("Title")
 
-        await loginPage.loginToWebsite(email, pasword)
+        await loginPage.loginToWebsite(email, password)
         console.log("STEP 1: Delete trip with title " + title)
         debugger
         await homePage.deleteTrip(title)

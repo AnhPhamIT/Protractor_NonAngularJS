@@ -4,15 +4,20 @@ var dateFormat = require('dateformat');
 exports.config = {
     framework: 'jasmine',
     // The address of a running selenium server.
-    seleniumAddress: 'http://localhost:4444/wd/hub',
-    specs: ['Testcases/TripTest.ts'],
+    //seleniumAddress: 'http://localhost:4444/wd/hub',
+    specs: ['Testcases/LoginTest.ts'],
     //run directly with browser driver without using webdriver manager
-    //directConnect: true,
+    // directConnect: true,
     // Capabilities to be passed to the webdriver instance.
     capabilities: {
         browserName: 'chrome'
     },
     restartBrowserBetweenTests: true,
+    params: { // define global variable
+        appURL: 'http://23.96.32.200/index.php',
+        user: 'ptvanh9@mailinator.com', 
+        pass: '123456'
+    },
     onPrepare: function() {
         require('ts-node').register({
           project: require('path').join(__dirname, './tsconfig.json')
