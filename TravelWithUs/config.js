@@ -4,7 +4,11 @@ var dateFormat = require('dateformat');
 exports.config = {
     framework: 'jasmine',
     // The address of a running selenium server.
+<<<<<<< HEAD
     //seleniumAddress: 'http://localhost:4444/wd/hub',
+=======
+    seleniumAddress: 'http://localhost:4444/wd/hub',
+>>>>>>> 789c9d5fed6439d23a53107269dd28f8fe99f4bc
     specs: ['Testcases/LoginTest.ts'],
     //run directly with browser driver without using webdriver manager
     // directConnect: true,
@@ -61,8 +65,7 @@ exports.config = {
         //     }
         // });
 
-        // Add a screenshot reporter and store screenshots to `/tmp/screenshots`:
-        
+        // Add a screenshot reporter and store screenshots to `/tmp/screenshots`: 
     },
     SELENIUM_PROMISE_MANAGER: false,
     //HTMLReport called once tests are finished
