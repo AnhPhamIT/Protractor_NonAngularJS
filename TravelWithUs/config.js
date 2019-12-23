@@ -4,22 +4,22 @@ var dateFormat = require('dateformat');
 exports.config = {
     framework: 'jasmine',
     // The address of a running selenium server.
-<<<<<<< HEAD
-    //seleniumAddress: 'http://localhost:4444/wd/hub',
-=======
     seleniumAddress: 'http://localhost:4444/wd/hub',
->>>>>>> 789c9d5fed6439d23a53107269dd28f8fe99f4bc
-    specs: ['Testcases/LoginTest.ts'],
+
+    specs: ['Testcases/RegisterTest.ts'],
     //run directly with browser driver without using webdriver manager
-    // directConnect: true,
+    //directConnect: true,
     // Capabilities to be passed to the webdriver instance.
     capabilities: {
-        browserName: 'chrome'
+        browserName: 'chrome',
+        chromeOptions: {
+            'args': ['--start-maximized']
+        }
     },
     restartBrowserBetweenTests: true,
     params: { // define global variable
-        appURL: 'http://23.96.32.200/index.php',
-        user: 'ptvanh9@mailinator.com', 
+        appURL: 'http://travelwithus.asia/',
+        user: 'ptvanh@mailinator.com', 
         pass: '123456'
     },
     onPrepare: function() {
@@ -66,6 +66,7 @@ exports.config = {
         // });
 
         // Add a screenshot reporter and store screenshots to `/tmp/screenshots`: 
+        return browser.takeScreenshot();
     },
     SELENIUM_PROMISE_MANAGER: false,
     //HTMLReport called once tests are finished

@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "config.js",
-  "dependencies": {},
+  "dependencies": {
+    "webdriver-manager": "^12.1.7"
+  },
   "devDependencies": {
     "@types/jasmine": "^3.3.12",
     "@types/jasminewd2": "^2.0.6",

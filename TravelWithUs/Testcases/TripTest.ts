@@ -43,7 +43,7 @@ describe("User", function(){
         
     })
 
-    it("can add ToDo list for trip successfully", async function(){
+    xit("can add ToDo list for trip successfully", async function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Trips.xlsx", "AddToDo", "TC04");
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
@@ -62,7 +62,7 @@ describe("User", function(){
         
     })
 
-    it("can edit ToDo list for trip successfully", async function(){
+    xit("can edit ToDo list for trip successfully", async function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Trips.xlsx", "EditToDo", "TC05");
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
@@ -80,7 +80,7 @@ describe("User", function(){
         
     })
 
-    it("can delete ToDo list for trip successfully", async function(){
+    xit("can delete ToDo list for trip successfully", async function(){
         dataArray = await dataBuilder.readExcel(__dirname + "\\..\\TestData\\Trips.xlsx", "DeleteToDo", "TC06");
         browser.waitForAngularEnabled(false)
         browser.manage().window().maximize()
@@ -112,7 +112,7 @@ describe("User", function(){
         await homePage.editTrip(title, dataArray[0].get("EditTitle"), dataArray[0].get("EditPlace"), dataArray[0].get("EditStartDate"), dataArray[0].get("EditEndDate"), dataArray[0].get("EditMembers"))
         debugger
         console.log("STEP 2: verify alert message")
-        await alertHandling.verifyAndAcceptAlert("Your trip has been updated!")
+        await alertHandling.verifyAndAcceptAlert("The trip has been updated!")
         debugger
         console.log("STEP 3: accept the alert and make sure the deleted trip should not be showed on Trip table")
         await homePage.verifyNewTrip(dataArray[0].get("EditTitle"), dataArray[0].get("EditPlace"), dataArray[0].get("EditStartDate"), dataArray[0].get("EditEndDate"), dataArray[0].get("EditMembers"))
@@ -133,7 +133,7 @@ describe("User", function(){
         await homePage.deleteTrip(title)
         debugger
         console.log("STEP 2: verify alert message")
-        await alertHandling.verifyAndAcceptAlert("Your trip has been deleted!")
+        await alertHandling.verifyAndAcceptAlert("The trip has been deleted!")
         debugger
         console.log("STEP 3: accept the alert and make sure the deleted trip should not be showed on Trip table")
         await homePage.verifyDeletedTrip(title)

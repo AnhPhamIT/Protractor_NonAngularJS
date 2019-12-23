@@ -70,7 +70,8 @@ export class HomePage{
     }
 
     getWelcome_lbl(email:string){
-        return "//a[contains(text(),'Welcome " + email+ "')]" 
+        //return "//a[contains(text(),'Welcome " + email+ "')]" 
+        return "//a[normalize-space(.)='Welcome "+email+"']"
     }
 
     getToday_xpath(dateTimePickerIndex:string){

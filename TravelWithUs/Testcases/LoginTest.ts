@@ -47,7 +47,7 @@ describe("Login page ", function(){
         await loginPage.loginToWebsite(email, password)
         
         console.log("STEP 2: Verify alert message and then dismiss")
-        await alertHandling.verifyAndAcceptAlert("There is no user record corresponding to this identifier. The user may have been deleted.")
+        await alertHandling.verifyAndAcceptAlert("There is no user record corresponding to this identifier. The user may have been deleted. FAILED CASE")
 
     })
 
